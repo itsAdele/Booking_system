@@ -1,5 +1,5 @@
 const Appointment = require('../models/appointment'); 
-const Artist = require('../models/Artist');
+const Artist = require('../models/artist');
 
 // 1. Creare un nuovo appuntamento
 exports.createAppointment = async (req, res) => {
