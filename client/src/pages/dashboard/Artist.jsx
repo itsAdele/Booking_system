@@ -13,10 +13,10 @@ function ArtistDashboard() {
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
 
-            const artRes = await axios.get('http://localhost:5000/api/artists/me', config);
+            const artRes = await axios.get('${import.meta.env.VITE_API_URL}/api/artists/me', config);
             setArtist(artRes.data);
 
-            const appRes = await axios.get('http://localhost:5000/api/appointments/artist', config);
+            const appRes = await axios.get('${import.meta.env.VITE_API_URL}/api/appointments/artist', config);
             setAppointments(appRes.data);
 
         } catch (err) {
@@ -35,7 +35,7 @@ function ArtistDashboard() {
         try {
             const token = localStorage.getItem('token');
             await axios.delete(
-                `http://localhost:5000/api/artists/${artist._id}/portfolio/${index}`,
+                `${import.meta.env.VITE_API_URL}/api/artists/${artist._id}/portfolio/${index}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             fetchData();
@@ -66,7 +66,7 @@ function ArtistDashboard() {
                         {artist.portfolio.map((img, index) => (
                             <div key={index} className="portfolio-item">
                                 <img
-                                    src={`http://localhost:5000${img}`}
+                                    src={`${import.meta.env.VITE_API_URL}${img}`}
                                     alt="Opera"
                                     className="portfolio-img"
                                 />

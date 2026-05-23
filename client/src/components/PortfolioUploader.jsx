@@ -12,7 +12,7 @@ function PortfolioUploader({ artistId, onUploadSuccess }) {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/artists/${artistId}/upload`, formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/artists/${artistId}/upload`, formData, {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

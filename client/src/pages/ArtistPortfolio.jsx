@@ -9,7 +9,7 @@ function ArtistPortfolio() {
 
   useEffect(() => {
     if (!id) return;
-    axios.get(`http://localhost:5000/api/artists/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/artists/${id}`)
       .then(res => {
         setArtist(res.data);
         setLoading(false);
@@ -47,7 +47,7 @@ function ArtistPortfolio() {
           {artist.portfolio.map((img, index) => (
             <div key={index} className="portfolio-public-item">
               <img
-                src={`http://localhost:5000${img}`}
+                src={`${import.meta.env.VITE_API_URL}${img}`}
                 alt={`Opera ${index + 1}`}
                 className="portfolio-public-img"
               />

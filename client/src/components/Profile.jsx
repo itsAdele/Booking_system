@@ -24,7 +24,7 @@ function ProfileBox({ isEditable = true }) {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const res = await axios.get('http://localhost:5000/api/users/profile', {
+      const res = await axios.get('${import.meta.env.VITE_API_URL}/api/users/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUser(res.data);
@@ -42,7 +42,7 @@ function ProfileBox({ isEditable = true }) {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5000/api/users/profile', {
+      await axios.put('${import.meta.env.VITE_API_URL}/api/users/profile', {
         username: user.username,
         bio: user.bio,
         imageUrl: user.imageUrl
@@ -66,7 +66,7 @@ function ProfileBox({ isEditable = true }) {
     }
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.put('http://localhost:5000/api/users/change-password', {
+      const res = await axios.put('${import.meta.env.VITE_API_URL}/api/users/change-password', {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword
       }, {
@@ -84,7 +84,7 @@ function ProfileBox({ isEditable = true }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.put('http://localhost:5000/api/users/change-email', {
+      const res = await axios.put('${import.meta.env.VITE_API_URL}/api/users/change-email', {
         newEmail: emailData.newEmail,
         password: emailData.password
       }, {

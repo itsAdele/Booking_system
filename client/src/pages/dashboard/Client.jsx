@@ -10,7 +10,7 @@ function ClientDashboard() {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/appointments', {
+      const res = await axios.get('${import.meta.env.VITE_API_URL}/api/appointments', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAppointments(res.data);
@@ -28,7 +28,7 @@ function ClientDashboard() {
 
     try {
         const token = localStorage.getItem('token');
-        await axios.put(`http://localhost:5000/api/appointments/${id}/status`, 
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/appointments/${id}/status`, 
             { status: 'cancelled' },
             { headers: { Authorization: `Bearer ${token}` } }
         );

@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 function Portfolio() {
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(true);
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/artists')
+    
+    axios.get(`${import.meta.env.VITE_API_URL}/api/artists`)
       .then(res => {
         setArtists(res.data);
         setLoading(false);
@@ -30,7 +30,7 @@ function Portfolio() {
           <div key={artist._id} className="artist-card">
             {artist.imageUrl && (
               <img
-                src={artist.imageUrl}
+                src={artist.imageUrl.startsWith('http') ? artist.imageUrl : `${import.meta.env.VITE_API_URL}${artist.imageUrl}`}
                 alt={artist.name}
                 className="artist-card-img"
               />
@@ -43,7 +43,7 @@ function Portfolio() {
               <Link to={`/portfolio/${artist._id}`} className="btn-portfolio">
                 Vedi Portfolio
               </Link>
-              {token ? (
+              {localStorage.getItem('token') ? (
                 <Link to="/dashboard/client" className="btn-booking">
                   Prenota
                 </Link>
