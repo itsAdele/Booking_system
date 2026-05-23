@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.send('Il server è online e il database è connesso!');
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server in ascolto sulla porta ${PORT}`);
 });
