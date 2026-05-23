@@ -1,6 +1,6 @@
 
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/user');
 
 // 1. Funzione per verificare se il token è valido
 const protect = async (req, res, next) => {
