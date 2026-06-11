@@ -11,7 +11,7 @@ function NewAppointmentForm({ onAppointmentCreated }) {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const res = await axios.get('${import.meta.env.VITE_API_URL}/api/artists');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/artists`);
         setArtists(res.data);
       } catch (err) {
         console.error("Errore nel caricamento artisti", err);
@@ -24,7 +24,7 @@ function NewAppointmentForm({ onAppointmentCreated }) {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('${import.meta.env.VITE_API_URL}/api/appointments', 
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/appointments`, 
         { date, description, artist: artistId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

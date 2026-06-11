@@ -13,10 +13,10 @@ function ArtistDashboard() {
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
 
-            const artRes = await axios.get('${import.meta.env.VITE_API_URL}/api/artists/me', config);
+            const artRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/artists/me`, config);
             setArtist(artRes.data);
 
-            const appRes = await axios.get('${import.meta.env.VITE_API_URL}/api/appointments/artist', config);
+            const appRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/artist`, config);
             setAppointments(appRes.data);
 
         } catch (err) {

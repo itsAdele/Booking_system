@@ -18,8 +18,8 @@ function AdminDashboard() {
       const token = localStorage.getItem('token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
-      const appRes = await axios.get('${import.meta.env.VITE_API_URL}/api/appointments/all', config);
-      const artRes = await axios.get('${import.meta.env.VITE_API_URL}/api/artists');
+      const appRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/appointments/all`, config);
+      const artRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/artists`);
 
       setAppointments(appRes.data);
       setArtists(artRes.data);
@@ -50,7 +50,7 @@ function AdminDashboard() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('${import.meta.env.VITE_API_URL}/api/artists', newArtist, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/artists`, newArtist, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert("Artista creato con successo!");

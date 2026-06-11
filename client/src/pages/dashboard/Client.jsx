@@ -10,7 +10,7 @@ function ClientDashboard() {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('${import.meta.env.VITE_API_URL}/api/appointments', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/appointments`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAppointments(res.data);
